@@ -1,10 +1,7 @@
-type NumOrUndefined = number | undefined;
-function practice(arr: NumOrUndefined[]) {
-    return arr.map((val: NumOrUndefined, i: number) => (
-        val !== undefined ? val * 5 : i * 5
-    ))
-}
+import fs from "fs";
 
-const arr = [undefined, 4,undefined];
-const newArr = practice(arr);
-console.log(newArr);
+const fileName = String(process.argv[2]);
+fs.readFileSync(fileName, { encoding: "utf8"} )
+    .toString()
+    .split("\n")
+    .forEach(line => console.log(line));

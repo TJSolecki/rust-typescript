@@ -1,12 +1,9 @@
-fn practice(value: Option<usize>, index: usize) -> usize {
-    return value.unwrap_or(index) * 5;
-}
-
 fn main() {
-    let arr: Vec<Option<usize>> = vec![None, None, Some(5)];
-    let result: Vec<usize> = arr.iter()
-        .enumerate()
-        .map(|(i, x)| practice(*x, i))
-        .collect();
-    println!("result :{:?}", result);
+    let file_name = std::env::args().nth(1)
+        .expect("the file name should be passed in");
+
+    let file = std::fs::read_to_string(file_name)
+        .expect("unable to read the provided file to string");
+
+    file.lines().for_each(|line| println!("{}", line));
 }
