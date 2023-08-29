@@ -1,11 +1,12 @@
-fn foo(value: Option<usize>) -> Option<usize> {
-    // return value.map(|x| x * 5);
-    return Some(value? * 5);
+fn practice(value: Option<usize>, index: usize) -> usize {
+    return value.unwrap_or(index) * 5;
 }
 
 fn main() {
-    let value: Option<usize> = foo(Some(5));
-    println!("{:?}", value);
-    let value: Option<usize> = foo(None);
-    println!("{:?}", value);
+    let arr: Vec<Option<usize>> = vec![None, None, Some(5)];
+    let result: Vec<usize> = arr.iter()
+        .enumerate()
+        .map(|(i, x)| practice(*x, i))
+        .collect();
+    println!("result :{:?}", result);
 }
