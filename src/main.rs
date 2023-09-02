@@ -6,6 +6,10 @@ fn main() {
     let rect = Rect::default();
     println!("{}", rect);
 
+    for point in &rect {
+        println!("{:?}", point);
+    }
+
     let circ = Circle {
         x: 0.0,
         y: 0.0,
